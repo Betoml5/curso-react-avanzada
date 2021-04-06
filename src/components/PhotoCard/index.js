@@ -5,6 +5,7 @@ import { useNearScreen } from '../../hooks/useNearScreen'
 import { useMutation } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost';
 import { FavButton } from "../FavButton";
+import { Link } from "@reach/router";
 
 const DEFAULT_IMAGE =
   "https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png";
@@ -50,11 +51,11 @@ export const PhotoCard = (props, { id, likes = 0, src = DEFAULT_IMAGE }) => {
     <Article ref={ref}>
       {show && (
         <>
-          <a href={`/?detail=${props.id}`}>
+          <Link to={`/detail/${props.id}`}>
             <ImgWrapper>
               <Img src={props.src} alt="image" loading="lazy" />
             </ImgWrapper>
-          </a>
+          </Link>
           <FavButton liked={liked} likes={props.likes} onClick={handleFavClick} />
         </>
       )}
